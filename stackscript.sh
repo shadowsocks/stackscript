@@ -11,8 +11,8 @@ wget https://raw.githubusercontent.com/shadowsocks/stackscript/master/shadowsock
 wget https://raw.githubusercontent.com/shadowsocks/stackscript/master/shadowsocks.conf -O /etc/supervisor/conf.d/shadowsocks.conf
 wget https://raw.githubusercontent.com/shadowsocks/stackscript/master/local.conf -O /etc/sysctl.d/local.conf
 
-sed -i -e s/SS_PASSWORD/$SS_PASSWORD/ shadowsocks.json
-sed -i -e s/SS_PORT/$SS_PORT/ shadowsocks.json
+sed -i -e s/SS_PASSWORD/$SS_PASSWORD/ /etc/shadowsocks.json
+sed -i -e s/SS_PORT/$SS_PORT/ /etc/shadowsocks.json
 
 sysctl -p
 
