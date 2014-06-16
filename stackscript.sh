@@ -4,7 +4,7 @@ apt-get update
 apt-get install -y -qq python-pip python-m2crypto supervisor
 pip install shadowsocks
 
-SS_PASSWORD=`dd if=/dev/random bs=32 count=1 | md5sum | cut -c-16`
+SS_PASSWORD=`dd if=/dev/random bs=32 count=1 | md5sum | cut -c-32`
 SS_PORT=`shuf -i 2000-8000 -n 1`
 
 wget https://raw.githubusercontent.com/shadowsocks/stackscript/master/shadowsocks.json -O /etc/shadowsocks.json
