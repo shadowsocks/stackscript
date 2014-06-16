@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get update
-apt-get install python-pip python-m2crypto supervisor
+apt-get install -y -qq python-pip python-m2crypto supervisor
 pip install shadowsocks
 
 SS_PASSWORD=`dd if=/dev/random bs=32 count=1 | md5sum | cut -c-16`
