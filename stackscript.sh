@@ -14,7 +14,7 @@ wget https://raw.githubusercontent.com/shadowsocks/stackscript/master/local.conf
 sed -i -e s/SS_PASSWORD/$SS_PASSWORD/ /etc/shadowsocks.json
 sed -i -e s/SS_PORT/$SS_PORT/ /etc/shadowsocks.json
 
-sysctl -p
+sysctl --system
 
 echo 'ulimit -n 51200' >> /etc/default/supervisor
 
