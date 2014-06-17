@@ -16,7 +16,8 @@ sed -i -e s/SS_PORT/$SS_PORT/ /etc/shadowsocks.json
 
 sysctl --system
 
+service supervisor stop
 echo 'ulimit -n 51200' >> /etc/default/supervisor
-
 service supervisor start
+
 supervisorctl reload
