@@ -4,8 +4,12 @@ apt-get update
 apt-get install -y -qq python-pip python-m2crypto supervisor
 pip install shadowsocks
 
+PORTS_USED=`netstat -antl |grep LISTEN | awk '{ print $4 }' | cut -d: -f2|sed '/^$/d'|sort`
+PORTS_USED=`echo $PORTS_USED|sed 's/\s/$\|^/g'`
+PORTS_USED="^${PORTS_USED}$"
+
 SS_PASSWORD=`dd if=/dev/random bs=32 count=1 | md5sum | cut -c-32`
-SS_PORT=`shuf -i 2000-8000 -n 1`
+SS_PORT=`seq 10025 9000 | grep -v -E "$PORTS_USED" | shuf -n 1`
 
 wget https://raw.githubusercontent.com/shadowsocks/stackscript/master/shadowsocks.json -O /etc/shadowsocks.json
 wget https://raw.githubusercontent.com/shadowsocks/stackscript/master/shadowsocks.conf -O /etc/supervisor/conf.d/shadowsocks.conf
